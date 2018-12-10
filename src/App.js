@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import uuid from 'uuid'
 import $ from 'jquery'
+import './App.css';
 import Projects from './Components/Projects'
 import AddProject from './Components/AddProject'
-import './App.css';
+import Todos from './Components/Todos'
 
 class App extends Component {
   constructor(){
@@ -20,11 +21,9 @@ class App extends Component {
       dataType: 'json',
       cache: false,
       success: function(data){
-        this.setState({todos: data},
-          function(){
+        this.setState({todos: data}, function(){
             console.log(this.state);
-          }
-        )
+          });
       }.bind(this),
       error: function(xhr, status, err){
         console.log(err);
@@ -82,6 +81,8 @@ class App extends Component {
         <AddProject addProject = {this.handleAddProject.bind(this)} />
         <br/>
         <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)} />
+        <hr/>
+        <Todos todos= {this.state.todos} />
       </div>
     );
   }
