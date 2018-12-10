@@ -16,6 +16,8 @@ class Projects extends Component {
 
     return (
       <div className="Project">
+        <h3>Latest Projects</h3>
+
         {projectItems}
       </div>
     );
