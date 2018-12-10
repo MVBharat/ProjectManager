@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid'
 
 class AddProject extends Component {
   static defaultProps ={
@@ -19,8 +20,10 @@ class AddProject extends Component {
     }
     else{
       this.setState({newProject:{
+        id: uuid.v4(),
         title: this.refs.title.value,
         category: this.refs.category.value
+
       }}, function(){
         // console.log(this.state);
         this.props.addProject(this.state.newProject);
